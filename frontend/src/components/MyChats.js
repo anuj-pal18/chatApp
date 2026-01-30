@@ -11,12 +11,16 @@ import { ChatState } from "../Context/ChatProvider";
 
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
+  console.log("MyChats component rendered");
+
 
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
 
   const toast = useToast();
 
   const fetchChats = async () => {
+    console.log("fetchChats called", user);
+
     // console.log(user._id);
     try {
       const config = {
