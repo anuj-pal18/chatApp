@@ -1,6 +1,6 @@
-# (MERN Chat App)
+# (chatApp)
 
-Talk-A-Tive is a full-stack real-time chat application built using the MERN stack.
+chatApp  is a full-stack real-time chat application built using the MERN stack.
 It supports one-to-one and group chats with real-time messaging using Socket.io.
 
 This project is **based on an open-source MERN chat application**
