@@ -24,6 +24,9 @@ const MyChats = ({ fetchAgain }) => {
 
     // console.log(user._id);
     try {
+      if (!user || !user.token) {
+        return;
+      }
       const config = {
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -48,7 +51,7 @@ const MyChats = ({ fetchAgain }) => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
     // eslint-disable-next-line
-  }, [fetchAgain]);
+  }, [fetchAgain, user]);
 
   return (
     <Box
