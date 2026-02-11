@@ -2,6 +2,7 @@ const express = require("express");
 const connectDB = require("./config/db");
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, ".env") });
+const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
@@ -9,6 +10,25 @@ const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 connectDB();
 const app = express();
+
+const whitelist = [
+  "http://localhost:3000",
+  process.env.CLIENT_URL,
+].filter(Boolean);
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (whitelist.includes(origin) || /\.vercel\.app$/.test(new URL(origin).hostname)) {
+        callback(null, true);
+      } else {
+        callback(null, false);
+      }
+    },
+    credentials: true,
+  })
+);
 
 app.use(express.json()); // to accept json data
 
