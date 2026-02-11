@@ -1,11 +1,11 @@
 const express = require("express");
 const connectDB = require("./config/db");
-require("dotenv").config({ path: "./backend/.env" });
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
-const path = require("path");
 
 connectDB();
 const app = express();
@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(notFound);
 app.use(errorHandler);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 const server = app.listen(
   PORT,
