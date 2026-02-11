@@ -16,7 +16,8 @@ import {
   IconButton,
   Spinner,
 } from "@chakra-ui/react";
-import API from "../config/api";
+import API from "../../config/api";
+
 import { useState } from "react";
 import { ChatState } from "../../Context/ChatProvider";
 import UserBadgeItem from "../userAvatar/UserBadgeItem";
