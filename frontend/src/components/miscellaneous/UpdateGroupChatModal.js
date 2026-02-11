@@ -16,7 +16,7 @@ import {
   IconButton,
   Spinner,
 } from "@chakra-ui/react";
-import axios from "axios";
+import API from "../config/api";
 import { useState } from "react";
 import { ChatState } from "../../Context/ChatProvider";
 import UserBadgeItem from "../userAvatar/UserBadgeItem";
@@ -131,7 +131,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.put(
+      const { data } = await API.put(
         `/api/chat/groupadd`,
         {
           chatId: selectedChat._id,
@@ -176,7 +176,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.put(
+      const { data } = await API.put(
         `/api/chat/groupremove`,
         {
           chatId: selectedChat._id,

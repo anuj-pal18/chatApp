@@ -3,7 +3,7 @@ import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
 import { VStack } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
-import axios from "axios";
+import API from "../config/api";
 import { useState } from "react";
 import { useHistory } from "react-router";
 
@@ -50,7 +50,7 @@ const Signup = () => {
           "Content-type": "application/json",
         },
       };
-      const { data } = await axios.post(
+      const { data } = await API.post(
         "/api/user",
         {
           name,

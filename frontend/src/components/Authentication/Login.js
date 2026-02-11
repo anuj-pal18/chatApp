@@ -3,7 +3,7 @@ import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
 import { VStack } from "@chakra-ui/layout";
 import { useState } from "react";
-import axios from "axios";
+import API from "../config/api";
 import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { ChatState } from "../../Context/ChatProvider";
@@ -40,7 +40,7 @@ const Login = () => {
         },
       };
 
-      const { data } = await axios.post(
+      const { data } = await API.post(
         "/api/user/login",
         { email, password },
         config
